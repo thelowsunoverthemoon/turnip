@@ -28,7 +28,7 @@
 
 3. After this you can put whatever code you want to happen before your game starts.
 
-4. Add all the objects and attributes you'd like in your game according to the documentation [here]().
+4. Add all the objects and attributes you'd like in your game according to the documentation [here](doc/doc).
 
 5. Add ```%TURNIP_START_GAME%``` to siginify you want your game to start.
 
@@ -36,7 +36,7 @@
 
 7. Add a ```RETURN``` label. This is where your game will go after you tell it to end.
 
-8. At the end of your batch file, copy and paste the engine [here]() at the end. This is the "engine". Do not edit it.
+8. At the end of your batch file, copy and paste the engine [here](src/engine.bat) at the end. This is the "engine". Do not edit it.
 
 9. READ THE EXAMPLES [here](src/engine.bat). These will give you a good idea on how to use **turnip**.
 
