@@ -20,3 +20,10 @@
 * Not beginner friendly
 * Uses Batch
 
+## How to Use
+
+1. Get your batch file and copy and paste this at the top
+READ EXAMPLES
+2. Copy and paste this at the bottom
+
+## Showcase
