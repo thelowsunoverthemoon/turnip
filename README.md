@@ -20,6 +20,21 @@
 * Not beginner friendly
 * Uses Batch
 
+## Showcase
+
+<img align="left" src="https://i.imgur.com/5H3WosM.gif">
+
+```
+textbox
+
+simple platforming
+
+mouse/key input
+
+walk/idle animation
+```
+<br clear="left"/>
+
 ## How to Use
 
 1. First, copy and paste the **header** [here](src/header.bat) at the very top of your batch file. Note that ```@ECHO OFF``` and ```SETLOCAL ENABLEDELAYEDEXPANSION``` are already used, and the code page is set to ```65001```. Do not edit it.
@@ -112,6 +127,3 @@ function makeText(a,c){var b=document.createElement("div"),d=document.getElement
 function msgMouse(a){msgMouse.chk=-1*msgMouse.chk||2;null!=msgMouse.prev&&fso.DeleteFile(msgMouse.prev);msgMouse.prev=a+"."+msgMouse.chk;fso.CopyFile("input.txt",msgMouse.prev)}function msgAnim(a){msgAnim.chk=-1*msgAnim.chk||3;null!=msgAnim.prev&&fso.DeleteFile(msgAnim.prev);msgAnim.prev=a+"."+msgAnim.chk;fso.CopyFile("input.txt",msgAnim.prev)};
 </SCRIPT></BODY><HTML>
 ```
-
-
-## Showcase
