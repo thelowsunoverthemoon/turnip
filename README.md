@@ -35,6 +35,24 @@ walk/idle animation
 ```
 <br clear="left"/>
 
+<img align="left" src="https://i.imgur.com/guQTzJ4.gif">
+
+```
+textbox
+
+data visualization
+
+mouse/key input
+```
+<br clear="left"/>
+
+<img align="left" src="https://i.imgur.com/A4z6Ceg.gif">
+
+```
+particle system
+```
+<br clear="left"/>
+
 ## How to Use
 
 1. First, copy and paste the **header** [here](src/header.bat) at the very top of your batch file. Note that ```@ECHO OFF``` and ```SETLOCAL ENABLEDELAYEDEXPANSION``` are already used, and the code page is set to ```65001```. Do not edit it.
