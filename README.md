@@ -31,7 +31,7 @@ simple platforming
 
 mouse/key input
 
-walk/idle animation
+sprites
 ```
 <br clear="left"/>
 
