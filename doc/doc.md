@@ -9,12 +9,14 @@
   * [Creating Objects](#obj)
     * [Sprites](#obj)
     * [Images](#obj)
+    * [Shapes](#obj)
     * [Text](#obj)
     * [Audio](#obj)
-    * [Interactions](#obj)
+  * [Adding Interactions](#obj)
   * [Editting Objects](#struct)
     * [Sprites](#obj)
     * [Images](#obj)
+    * [Shapes](#obj)
     * [Text](#obj)
     * [Audio](#obj)
   * [Getting Key Input](#struct)
@@ -73,41 +75,132 @@ In practice, this looks like:
 
 ::                 TURNIP ENGINE                    ::
 ```
+### Window
+The window is the canvas that you render on, and cannot be changed. If not called, the defaults are **bkg** : #FFFFFF, **w** : 500, **h** : 500, **x** : 0, **y** : 0, **framerate** : 10
+
+```Batch
+CALL :TURNIP_WINDOW bkg w h x y framerate
+```
+
+* **bkg** : background color in hex format
+* **w** : width in px
+* **h** : height in px
+* **x** : x coordinate in px
+* **y** : y coordinate in px
+* **framerate** : the render framerate in milleseconds (1 frame every n ms), cannot be lower than 10
+
+### Objects in turnip
+Objects refer to anything you can see on the screen. In turnip, objects **CANNOT** be created dynamically. That is, you have a set number of objects before the game starts and cannot create anymore later. Only objects that you specify with (see ) are interactable. When the action is used, a signal will be sent to the batch file, which you can capture through the key and mouse macros (see ). Object attributes can then be editted with the ```%TURNIP_MSG%``` macro (see). There are 4 types of objects in turnip:
+
+* **Sprites** : animated images that can be editted and interacted with, **MUST** be loaded first (see), and **MUST** be horizontally packed
+* **Images** : still images that **CANNOT** be editted and interacted with, example usage would be backgrounds that never move nor change, **MUST** be loaded first (see)
+* **Shapes** : solid color that can be editted and interacted with
+* **Text** : text box that can be editted and interacted with, text is always centered vertically
+* **Audio** : audio that can be editted
+
+### Loading Objects
+#### Sprites
+```Batch
+CALL :TURNIP_SPRITE id file frame
+```
+
+* **id** : variable to return sprite id to
+* **file** : name of spritesheet
+* **frame** : number of frames in spritesheet
+
+#### Images
+```Batch
+CALL :TURNIP_IMG id file
+```
+
+* **id** : variable to return image id to
+* **file** : name of image
 
 ### Creating Objects
-
-Objects refer to anything you can see on the screen. In turnip, objects **CANNOT** be created dynamically. That is, you have to have a set number of objects before the game starts and cannot create anymore later.
-
 #### Sprites
 
 ```Batch
-CALL :TURNIP_ADD_SPR id x y order framerate w h finish 
+CALL :TURNIP_ADD_SPR id spr x y order framerate w h finish 
 ```
 
-* **id** : sprite id given from ```CALL :TURNIP_SPRITE```
+* **id** : variable to return object id to
+* **spr** : sprite id given from ```CALL :TURNIP_SPRITE```
 * **x** : x coordinate in px
 * **y** : y coordinate in px
 * **order** : display order relative to other objects
 * **framerate** : change sprite frame every n frames
 * **w** : width in px
 * **h** : height in px
-* **finish** : if 1, signal batch file when animation ends (see ). 0 if not.
+* **finish** : if 1, signal batch file when animation ends (see ), 0 if not
 
 #### Images
 
 ```Batch
-CALL :TURNIP_ADD_SPR id x y order framerate w h finish 
+CALL :TURNIP_ADD_IMG img x y order w h
 ```
 
-* **id** : sprite id given from ```CALL :TURNIP_SPRITE```
+* **img** : img id given from ```CALL :TURNIP_IMG```
 * **x** : x coordinate in px
 * **y** : y coordinate in px
 * **order** : display order relative to other objects
-* **framerate** : change sprite frame every n frames
 * **w** : width in px
 * **h** : height in px
-* **finish** : if 1, signal batch file when animation ends (see ). 0 if not.
-* 
+
+####  Shapes
+
+```Batch
+CALL :TURNIP_ADD_SHAPE id x y order bkg w h round
+```
+
+* **id** : variable to return object id to
+* **x** : x coordinate in px
+* **y** : y coordinate in px
+* **order** : display order relative to other objects
+* **bkg** : background color in hex format
+* **w** : width in px
+* **h** : height in px
+* **round** : border radius (roundness) in px
+
+####  Text
+
+```Batch
+CALL :TURNIP_ADD_TEXT id x y order bkg w h round "text$size$color$align$font$padding"
+```
+
+* **id** : variable to return object id to
+* **x** : x coordinate in px
+* **y** : y coordinate in px
+* **order** : display order relative to other objects
+* **bkg** : background color in hex format
+* **w** : width in px
+* **h** : height in px
+* **round** : border radius (roundness) in px
+* **text** : text
+* **size** : font size in px
+* **color** : text color
+* **align** : text alignment (see [here](https://www.w3schools.com/cssref/pr_text_text-align.ASP))
+* **font** : font used (see [here](https://www.w3schools.com/cssref/pr_font_font-family.asp))
+* **padding** : space around text in px
+
+#### Audio
+
+```Batch
+CALL :TURNIP_ADD_MUSIC id audio start
+```
+
+* **id** : variable to return object id to
+* **audio** : name of audio file
+* **start** : 1 to immediatly start playing, 0 to not
+
+### Adding Interactions
+
+```Batch
+CALL :TURNIP_ADD_ATTRIB obj attrib
+```
+
+* **obj** : the sprite/image/shape/text object id
+* **attrib** : C to return click signal, H to return hover and unhover signal
+
 <a name="rule"/>
 
 ### Important Rules
