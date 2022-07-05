@@ -1,6 +1,8 @@
 ## Documentation
 ### Table of Contents
   * [How to Use](#how)
+  * [Window](#struct)
+  * [Objects in turnip](#s)
   * [Loading Objects](#struct)
     * [Sprites](#obj)
     * [Images](#obj)
@@ -18,6 +20,7 @@
   * [Getting Key Input](#struct)
   * [Getting Mouse Input](#struct)
   * [Getting End of Animation](#struct)
+  * [Important Rules](#rule)
 
 <a name="how"/>
 
@@ -73,9 +76,41 @@ In practice, this looks like:
 
 ### Creating Objects
 
+Objects refer to anything you can see on the screen. In turnip, objects **CANNOT** be created dynamically. That is, you have to have a set number of objects before the game starts and cannot create anymore later.
+
+#### Sprites
+
+```Batch
+CALL :TURNIP_ADD_SPR id x y order framerate w h finish 
+```
+
+* **id** : sprite id given from ```CALL :TURNIP_SPRITE```
+* **x** : x coordinate in px
+* **y** : y coordinate in px
+* **order** : display order relative to other objects
+* **framerate** : change sprite frame every n frames
+* **w** : width in px
+* **h** : height in px
+* **finish** : if 1, signal batch file when animation ends (see ). 0 if not.
+
+#### Images
+
+```Batch
+CALL :TURNIP_ADD_SPR id x y order framerate w h finish 
+```
+
+* **id** : sprite id given from ```CALL :TURNIP_SPRITE```
+* **x** : x coordinate in px
+* **y** : y coordinate in px
+* **order** : display order relative to other objects
+* **framerate** : change sprite frame every n frames
+* **w** : width in px
+* **h** : height in px
+* **finish** : if 1, signal batch file when animation ends (see ). 0 if not.
+* 
 <a name="rule"/>
 
-### IMPORTANT RULES WHEN USING THIS ENGINE
+### Important Rules
 
 1. **Use ```%TURNIP_MSG%``` AS LITTLE AS POSSIBLE**. There is no need to update every frame; the engine renders in the same state until another ```%TURNIP_MSG%```. It will become very slow if you do so. Look at the examples to see ideal usage.
 
