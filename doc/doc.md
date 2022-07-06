@@ -16,11 +16,8 @@
   * [Adding Interactions](#obj)
   * [Editting Objects](#struct)
     * [Sprites](#obj)
-    * [Global](#obj)
-    * [Shapes](#obj)
-    * [Text](#obj)
-    * [Audio](#obj)
-    * [Sound](#obj)
+    * [S](#obj)
+  * [Global Effects](#obj)
   * [Getting Key Input](#struct)
   * [Getting Mouse Input](#struct)
   * [Getting End of Animation](#struct)
@@ -94,7 +91,7 @@ CALL :TURNIP_WINDOW bkg w h x y framerate
 
 ### Objects in turnip
 ---
-Objects refer to anything you can see on the screen. In turnip, objects **CANNOT** be created dynamically. That is, you have a set number of objects before the game starts and cannot create anymore later. Only objects that you specify with (see ) are interactable. When the action is used, a signal will be sent to the batch file, which you can capture through the key and mouse macros (see ). Object attributes can then be editted with the ```%TURNIP_MSG%``` macro (see). There are 4 types of objects in turnip:
+Objects refer to anything you can see on the screen and cannot be destroyed. In turnip, objects **CANNOT** be created dynamically. That is, you have a set number of objects before the game starts and cannot create anymore later. Only objects that you specify with (see ) are interactable. There is **ONE** exception to this rule, and that is to audio. As you can see below, the **audio** object is looping, and that cannot be changed. However, you can "dynamically" create a sound (non looping) in a game loop that cannot be editted. Thus, the **audio** object might be used for a overlaying soundtrack, while a sound can be used as a sound effect (see ). When the action is used, a signal will be sent to the batch file, which you can capture through the key and mouse macros (see ). Object attributes can then be editted with the ```%TURNIP_MSG%``` macro (see). There are 4 types of objects in turnip:
 
 * **Sprites** : animated images that can be editted and interacted with, **MUST** be loaded first (see), and **MUST** be horizontally packed
 * **Images** : still images that **CANNOT** be editted and interacted with, example usage would be backgrounds that never move nor change, **MUST** be loaded first (see)
@@ -208,12 +205,13 @@ CALL :TURNIP_ADD_ATTRIB obj attrib
 * **attrib** : C to return click signal, H to return hover and unhover signal
 
 ### Editting Objects
-#### Sprites
-#### Shapes
-#### Text
-#### Audio
-#### Sound
-#### Global
+
+```Batch
+%TURNIP_MSG% obj x y w h trans bkg
+```
+
+
+### Global Effects
 <a name="rule"/>
 
 ### Important Rules
