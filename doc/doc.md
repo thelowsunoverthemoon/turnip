@@ -4,6 +4,7 @@
   * [How to Use](#how)
   * [Overview](#ov)
     * [In General](#s)
+    * [How it Works](#s)
     * [Objects in turnip](#s)
   * [Window](#struct)
   * [Loading Objects](#struct)
@@ -83,6 +84,11 @@ In practice, this looks like:
 ---
 #### In General
 
+
+
+#### How it Works
+
+turnip works through MSHTA. MSHTA is an exe that executes HTA applications (think web page); therefore, you can combine CSS, HTML, and Javascript into one file. However, user Aacini from DOStips [here](https://www.dostips.com/forum/viewtopic.php?t=6581) found a way to combine Batch script and HTAs together. This is just a natural extension of those programs. By taking advantage of a web browser renderer, we can achieve real graphics, all while containing the logic inside a Batch file.
 
 #### Objects in turnip
 
