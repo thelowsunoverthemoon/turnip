@@ -3,7 +3,8 @@
 ---
   * [How to Use](#how)
   * [Window](#struct)
-  * [Objects in turnip](#s)
+  * [Overview](#ov)
+    * [Objects in turnip](#s)
   * [Loading Objects](#struct)
     * [Sprites](#obj)
     * [Images](#obj)
@@ -15,8 +16,9 @@
     * [Audio](#obj)
   * [Adding Interactions](#obj)
   * [Editting Objects](#struct)
-    * [Sprites](#obj)
-    * [S](#obj)
+    * [Audio](#obj)
+    * [Sound](#obj)
+    * [Sprites/Shapes/Text](#obj)
   * [Global Effects](#obj)
   * [Getting Key Input](#struct)
   * [Getting Mouse Input](#struct)
@@ -205,11 +207,45 @@ CALL :TURNIP_ADD_ATTRIB obj attrib
 * **attrib** : C to return click signal, H to return hover and unhover signal
 
 ### Editting Objects
+---
 
+#### Audio
 ```Batch
-%TURNIP_MSG% obj x y w h trans bkg
+%TURNIP_MSG% ~;id;type
 ```
 
+* **id** : audio id given from ```CALL :TURNIP_ADD_MUISC```
+* **type** : 1 to play, 2 to pause, 3 to restart (start from begininning and play)
+
+#### Sound
+
+```Batch
+%TURNIP_MSG% *;sound
+```
+
+* **sound** : name of sound file
+
+
+#### Sprites/Shapes/Text
+
+```Batch
+%TURNIP_MSG% id;params
+```
+
+* **id** : object id from ```CALL :TURNIP_ADD_SPR```, ```CALL :TURNIP_ADD_SHAPE```, ```CALL :TURNIP_ADD_TEXT```
+* **params** : in the form type$value seperated by ```;```, all other values will remain the same until changed; ie x$5;y$2 will change x position to 5 and y position to 2
+
+| Type  | Description | Applicable |
+| ------------- | ------------- | ------------- | 
+| ```x``` | x position in px | Sprites/Shapes/Text |
+| ```y``` | y position in px | Sprites/Shapes/Text |
+| ```w``` | width in px | Sprites/Shapes/Text |
+| ```h``` | height in px | Sprites/Shapes/Text |
+| ```t``` | transformation (see [here](https://developer.mozilla.org/en-US/docs/Web/CSS/transform), only those supported in IE 9) | Sprites/Shapes/Text |
+| ```b``` | background colour | Shapes/Text |
+| ```r``` | border radius (roundness) in px | Shapes/Text|
+| ```s``` | change sprite; must specify all 6 values : id, w, h, framerate, finish, and either 1 to reset current frame to 0, or 0 to not (see for more details) | Sprites |
+| ```f``` | text; must specify all 5 values : color, size, align, font, text (see for more details) | Text |
 
 ### Global Effects
 <a name="rule"/>
