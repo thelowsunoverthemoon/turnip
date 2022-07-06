@@ -32,7 +32,7 @@
 
 ### How to Use
 ---
-1. First, copy and paste the **header** [here](src/header.bat) at the very top of your batch file. Note that ```@ECHO OFF``` and ```SETLOCAL ENABLEDELAYEDEXPANSION``` are already used, and the code page is set to ```65001```. **Do not edit it**
+1. First, copy and paste the **header** [here](../src/header.bat) at the very top of your batch file. Note that ```@ECHO OFF``` and ```SETLOCAL ENABLEDELAYEDEXPANSION``` are already used, and the code page is set to ```65001```. **Do not edit it**
 
 2. Next, as with most programming languages, you will have to have a ```MAIN``` section. Create a ```MAIN``` label. In this label, we will have to initiate the engine. There is a macro for this called ```%TURNIP_INIT%```.
 
@@ -46,9 +46,9 @@
 
 7. Add a ```RETURN``` label. This is where your game will go after you tell it to end.
 
-8. At the end of your batch file, copy and paste the **engine** [here](src/engine.bat) at the end. **Do not edit it**
+8. At the end of your batch file, copy and paste the **engine** [here](../src/engine.bat) at the end. **Do not edit it**
 
-9. **READ THE EXAMPLES** [here](src/engine.bat).
+9. **READ THE EXAMPLES** [here](../ex).
 
 10. **READ THE RULES** [here](#rule).
 
