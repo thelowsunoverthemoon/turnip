@@ -265,7 +265,7 @@ CALL :TURNIP_ADD_ATTRIB obj attrib
 ```
 
 * **id** : audio id given from ```CALL :TURNIP_ADD_MUISC```
-* **type** : 1 to play, 2 to pause, 3 to restart (start from begininning and play)
+* **type** : 0 to play, 1 to pause, 2 to restart (start from begininning and play)
 
 <a name="eos"/>
 
