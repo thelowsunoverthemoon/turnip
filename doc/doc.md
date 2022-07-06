@@ -3,28 +3,29 @@
 ---
   * [How to Use](#how)
   * [Overview](#ov)
-    * [In General](#s)
-    * [How it Works](#s)
-    * [Objects in turnip](#s)
-  * [Window](#struct)
-  * [Loading Objects](#struct)
-    * [Sprites](#obj)
-    * [Images](#obj)
-  * [Creating Objects](#obj)
-    * [Sprites](#obj)
-    * [Images](#obj)
-    * [Shapes](#obj)
-    * [Text](#obj)
-    * [Audio](#obj)
-  * [Adding Interactions](#obj)
-  * [Editting Objects](#struct)
-    * [Audio](#obj)
-    * [Sound](#obj)
-    * [Sprites/Shapes/Text](#obj)
-  * [Global Effects](#obj)
-  * [Getting Key Input](#struct)
-  * [Getting Mouse Input](#struct)
-  * [Getting End of Animation](#struct)
+    * [In General](#ig)
+    * [How it Works](#hw)
+    * [Objects in turnip](#ot)
+  * [Window](#wi)
+  * [Loading Objects](#lo)
+    * [Sprites](#los)
+    * [Images](#loi)
+  * [Creating Objects](#co)
+    * [Sprites](#cos)
+    * [Images](#coi)
+    * [Shapes](#cosp)
+    * [Text](#cot)
+    * [Audio](#coa)
+  * [Adding Interactions](#ai)
+  * [Editting Objects](#eo)
+    * [Audio](#eoa)
+    * [Sound](#eos)
+    * [Sprites/Shapes/Text](#eoe)
+  * [Global Effects](#ge)
+  * [Getting Input](#gi)
+    * [Getting Key Input](#gk)
+    * [Getting Mouse Input](#gm)
+    * [Getting End of Animation](#ga)
   * [Important Rules](#rule)
 
 <a name="how"/>
@@ -79,26 +80,35 @@ In practice, this looks like:
 ::                 TURNIP ENGINE                    ::
 ```
 
+<a name="ov"/>
 
 ### Overview
 ---
+<a name="ig"/>
+
 #### In General
 
+Inside ```MAIN```, you add the objects you would like with the ```ADD``` functions (see [here](#co)). Sprites and images, however, must be "loaded" first (see [here](#lo)). To add interactivity to shapes, text, and sprites, see [here](#ai). This is not a traditional renderer, where you must load all objects every frame. Only message what needs to be changed each frame; if nothing changes, there is no need to message anything. We message the renderer via the ```%TURNIP_MSG%```macro. To pause, stop, or unpause the rendering, see [here](#ge). Getting key/mouse input and end of animation is through macros as well (see [here](#gi)). The game goes to the ```RETURN``` label when finished.
 
+<a name="hw"/>
 
 #### How it Works
 
-turnip works through MSHTA. MSHTA is an exe that executes HTA applications (think web page); therefore, you can combine CSS, HTML, and Javascript into one file. However, user Aacini from DOStips [here](https://www.dostips.com/forum/viewtopic.php?t=6581) found a way to combine Batch script and HTAs together. This is just a natural extension of those programs. By taking advantage of a web browser renderer, we can achieve real graphics, all while containing the logic inside a Batch file.
+**turnip** works through MSHTA. MSHTA is an exe that executes HTA applications (think web page); therefore, you can combine CSS, HTML, and Javascript into one file. However, user Aacini from DOStips [here](https://www.dostips.com/forum/viewtopic.php?t=6581) found a way to combine Batch script and HTAs together. This is just a natural extension of those programs. By taking advantage of a web browser renderer, we can achieve real graphics, all while containing the logic inside a Batch file.
+
+<a name="ot"/>
 
 #### Objects in turnip
 
-Objects refer to anything you can see on the screen and cannot be destroyed. In turnip, objects **CANNOT** be created dynamically. That is, you have a set number of objects before the game starts and cannot create anymore later. Only objects that you specify with (see ) are interactable. There is **ONE** exception to this rule, and that is to audio. As you can see below, the **audio** object is looping, and that cannot be changed. However, you can "dynamically" create a sound (non looping) in a game loop that cannot be editted. Thus, the **audio** object might be used for a overlaying soundtrack, while a sound can be used as a sound effect (see ). When the action is used, a signal will be sent to the batch file, which you can capture through the key and mouse macros (see ). Object attributes can then be editted with the ```%TURNIP_MSG%``` macro (see). There are 4 types of objects in turnip:
+Objects refer to anything you can see on the screen and cannot be destroyed. In turnip, objects **CANNOT** be created dynamically. That is, you have a set number of objects before the game starts and cannot create anymore later. Only objects that you specify with (see [here](#ai)) are interactable. There is **ONE** exception to this rule, and that is to audio. As you can see below, the **audio** object is looping, and that cannot be changed. However, you can "dynamically" create a sound (non looping) in a game loop that cannot be editted. Thus, the **audio** object might be used for a overlaying soundtrack, while a sound can be used as a sound effect (see [here](#eos)). When the action is used, a signal will be sent to the batch file, which you can capture through the key and mouse macros (see [here](#gi)). Object attributes can then be editted with the ```%TURNIP_MSG%``` macro (see [here](#eo)). There are 4 types of objects in turnip:
 
-* **Sprites** : animated images that can be editted and interacted with, **MUST** be loaded first (see), and **MUST** be horizontally packed
-* **Images** : still images that **CANNOT** be editted and interacted with, example usage would be backgrounds that never move nor change, **MUST** be loaded first (see)
+* **Sprites** : animated images that can be editted and interacted with, **MUST** be loaded first (see [here](#lo)), and **MUST** be horizontally packed
+* **Images** : still images that **CANNOT** be editted and interacted with, example usage would be backgrounds that never move nor change, **MUST** be loaded first (see [here](#lo))
 * **Shapes** : solid color that can be editted and interacted with
 * **Text** : text box that can be editted and interacted with, text is always centered vertically
 * **Audio** : looping audio that can be editted
+
+<a name="wi"/>
 
 ### Window
 ---
@@ -114,9 +124,14 @@ CALL :TURNIP_WINDOW bkg w h x y framerate
 * **x** : x coordinate in px
 * **y** : y coordinate in px
 * **framerate** : the render framerate in milleseconds (1 frame every n ms), cannot be lower than 10
-* 
+
+<a name="lo"/>
+
 ### Loading Objects
 ---
+
+<a name="los"/>
+
 #### Sprites
 ```Batch
 CALL :TURNIP_SPRITE id file frame
@@ -125,6 +140,8 @@ CALL :TURNIP_SPRITE id file frame
 * **id** : variable to return sprite id to
 * **file** : name of spritesheet
 * **frame** : number of frames in spritesheet
+* 
+<a name="loi"/>
 
 #### Images
 ```Batch
@@ -134,8 +151,13 @@ CALL :TURNIP_IMG id file
 * **id** : variable to return image id to
 * **file** : name of image
 
+<a name="co"/>
+
 ### Creating Objects
 ---
+
+<a name="cos"/>
+
 #### Sprites
 
 ```Batch
@@ -150,7 +172,9 @@ CALL :TURNIP_ADD_SPR id spr x y order framerate w h finish
 * **framerate** : change sprite frame every n frames
 * **w** : width in px
 * **h** : height in px
-* **finish** : if 1, signal batch file when animation ends (see ), 0 if not
+* **finish** : if 1, signal batch file when animation ends (see [here](#ga)), 0 if not
+
+<a name="coi"/>
 
 #### Images
 
@@ -164,6 +188,8 @@ CALL :TURNIP_ADD_IMG img x y order w h
 * **order** : display order relative to other objects
 * **w** : width in px
 * **h** : height in px
+
+<a name="cosp"/>
 
 ####  Shapes
 
@@ -179,6 +205,8 @@ CALL :TURNIP_ADD_SHAPE id x y order bkg w h round
 * **w** : width in px
 * **h** : height in px
 * **round** : border radius (roundness) in px
+
+<a name="cot"/>
 
 ####  Text
 
@@ -201,6 +229,8 @@ CALL :TURNIP_ADD_TEXT id x y order bkg w h round "text$size$color$align$font$pad
 * **font** : font used (see [here](https://www.w3schools.com/cssref/pr_font_font-family.asp))
 * **padding** : space around text in px
 
+<a name="coa"/>
+
 #### Audio
 
 ```Batch
@@ -211,6 +241,8 @@ CALL :TURNIP_ADD_MUSIC id audio start
 * **audio** : name of audio file
 * **start** : 1 to immediatly start playing, 0 to not
 
+<a name="ai"/>
+
 ### Adding Interactions
 ---
 ```Batch
@@ -220,8 +252,12 @@ CALL :TURNIP_ADD_ATTRIB obj attrib
 * **obj** : the sprite/image/shape/text object id
 * **attrib** : C to return click signal, H to return hover and unhover signal
 
+<a name="eo"/>
+
 ### Editting Objects
 ---
+
+<a name="eoa"/>
 
 #### Audio
 ```Batch
@@ -231,6 +267,8 @@ CALL :TURNIP_ADD_ATTRIB obj attrib
 * **id** : audio id given from ```CALL :TURNIP_ADD_MUISC```
 * **type** : 1 to play, 2 to pause, 3 to restart (start from begininning and play)
 
+<a name="eos"/>
+
 #### Sound
 
 ```Batch
@@ -239,6 +277,7 @@ CALL :TURNIP_ADD_ATTRIB obj attrib
 
 * **sound** : name of sound file
 
+<a name="eoe"/>
 
 #### Sprites/Shapes/Text
 
@@ -258,17 +297,30 @@ CALL :TURNIP_ADD_ATTRIB obj attrib
 | ```t``` | transformation (see [here](https://developer.mozilla.org/en-US/docs/Web/CSS/transform), only those supported in IE 9) | Sprites/Shapes/Text |
 | ```b``` | background colour | Shapes/Text |
 | ```r``` | border radius (roundness) in px | Shapes/Text|
-| ```s``` | change sprite; must specify all 6 values : id, w, h, framerate, finish, and either 1 to reset current frame to 0, or 0 to not (see for more details) | Sprites |
-| ```f``` | text; must specify all 5 values : color, size, align, font, text (see for more details) | Text |
+| ```s``` | change sprite; must specify all 6 values : id, w, h, framerate, finish, and either 1 to reset current frame to 0, or 0 to not (see [here](#cos)) | Sprites |
+| ```f``` | text; must specify all 5 values : color, size, align, font, text (see [here](#cot)) | Text |
+
+<a name="ge"/>
 
 ### Global Effects
+
+---
+
 ```Batch
 %TURNIP_MSG% global
 ```
 
 * **global** : S to end the game and close window, P to pause the game, U to unpause the game
 
-### Getting Key Input
+
+<a name="gi"/>
+
+### Getting Input
+---
+
+<a name="gk"/>
+
+#### Key Input
 
 To get key input use the macros ```%TURNIP_GET_KEY%``` and ```%TURNIP_END_KEY%```. The value is returned in ```%%~nK```, and is the decimal key code of the key pressed. Most computers use ASCII encoding, so it can be looked up [here](https://www.asciitable.com/). For example, to test for the character ```a```:
 
@@ -279,8 +331,10 @@ To get key input use the macros ```%TURNIP_GET_KEY%``` and ```%TURNIP_END_KEY%``
     )
 %TURNIP_END_KEY%
 ```
-    
-### Getting Mouse Input
+
+<a name="gm"/>
+
+#### Mouse Input
 
 To get key input use the macros ```%TURNIP_GET_MOUSE%``` and ```%TURNIP_END_MOUSE%```. The value is returned in ```%%~nM```, and is in the form "type id". **type** is one of H (hovered), C (clicked) or D (dehovered). **id** is the object id. For example, the test if object 2 is hovered and object 3 is clicked:
 
@@ -294,21 +348,10 @@ To get key input use the macros ```%TURNIP_GET_MOUSE%``` and ```%TURNIP_END_MOUS
 %TURNIP_END_MOUSE%
 ```
 
-### Getting Mouse Input
+<a name="ga"/>
 
-To get key input use the macros ```%TURNIP_GET_MOUSE%``` and ```%TURNIP_END_MOUSE%```. The value is returned in ```%%~nM```, and is in the form "type id". **type** is one of H (hovered), C (clicked) or D (dehovered). **id** is the object id. For example, to test if object 2 is hovered and object 3 is clicked:
 
-```Batch
-%TURNIP_GET_MOUSE%
-    IF "%%~nM" == "H 2" (
-        :: what happens when hovered? ::
-    ) else IF "%%~nM" == "C 3" (
-       :: what happens when clicked? ::
-    )
-%TURNIP_END_MOUSE%
-```
-
-### Getting End of Animation
+#### End of Animation
 
 To get the end of animation for a sprite, the sprite must have **finish** set to 1. The value returned is in ```%%F``` annd is the object id. Please note that multiple ids can be returned at once, since multiple animations can end at the same time. Hence, in that case, this will loop through each id. For example, to test if object 4's animation ended: (though in this case since it's only one object, you can just forget the IF)
 
