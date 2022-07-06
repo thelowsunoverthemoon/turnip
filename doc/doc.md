@@ -295,7 +295,7 @@ CALL :TURNIP_ADD_ATTRIB obj attrib
 | ```w``` | width in px | Sprites/Shapes/Text |
 | ```h``` | height in px | Sprites/Shapes/Text |
 | ```t``` | transformation (see [here](https://developer.mozilla.org/en-US/docs/Web/CSS/transform), only those supported in IE 9) | Sprites/Shapes/Text |
-| ```b``` | background colour | Shapes/Text |
+| ```b``` | background colour in hex format OR rgb(r,g,b) | Shapes/Text |
 | ```r``` | border radius (roundness) in px | Shapes/Text|
 | ```s``` | change sprite; must specify all 6 values : id, w, h, framerate, finish, and either 1 to reset current frame to 0, or 0 to not (see [here](#cos)) | Sprites |
 | ```f``` | text; must specify all 5 values : color, size, align, font, text (see [here](#cot)) | Text |
