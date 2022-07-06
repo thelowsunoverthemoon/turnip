@@ -2,9 +2,10 @@
 ### Table of Contents
 ---
   * [How to Use](#how)
-  * [Window](#struct)
   * [Overview](#ov)
+    * [In General](#s)
     * [Objects in turnip](#s)
+  * [Window](#struct)
   * [Loading Objects](#struct)
     * [Sprites](#obj)
     * [Images](#obj)
@@ -76,6 +77,23 @@ In practice, this looks like:
 
 ::                 TURNIP ENGINE                    ::
 ```
+
+
+### Overview
+---
+#### In General
+
+
+#### Objects in turnip
+
+Objects refer to anything you can see on the screen and cannot be destroyed. In turnip, objects **CANNOT** be created dynamically. That is, you have a set number of objects before the game starts and cannot create anymore later. Only objects that you specify with (see ) are interactable. There is **ONE** exception to this rule, and that is to audio. As you can see below, the **audio** object is looping, and that cannot be changed. However, you can "dynamically" create a sound (non looping) in a game loop that cannot be editted. Thus, the **audio** object might be used for a overlaying soundtrack, while a sound can be used as a sound effect (see ). When the action is used, a signal will be sent to the batch file, which you can capture through the key and mouse macros (see ). Object attributes can then be editted with the ```%TURNIP_MSG%``` macro (see). There are 4 types of objects in turnip:
+
+* **Sprites** : animated images that can be editted and interacted with, **MUST** be loaded first (see), and **MUST** be horizontally packed
+* **Images** : still images that **CANNOT** be editted and interacted with, example usage would be backgrounds that never move nor change, **MUST** be loaded first (see)
+* **Shapes** : solid color that can be editted and interacted with
+* **Text** : text box that can be editted and interacted with, text is always centered vertically
+* **Audio** : looping audio that can be editted
+
 ### Window
 ---
 The window is the canvas that you render on, and cannot be changed. If not called, the defaults are **bkg** : #FFFFFF, **w** : 500, **h** : 500, **x** : 0, **y** : 0, **framerate** : 10
@@ -90,17 +108,7 @@ CALL :TURNIP_WINDOW bkg w h x y framerate
 * **x** : x coordinate in px
 * **y** : y coordinate in px
 * **framerate** : the render framerate in milleseconds (1 frame every n ms), cannot be lower than 10
-
-### Objects in turnip
----
-Objects refer to anything you can see on the screen and cannot be destroyed. In turnip, objects **CANNOT** be created dynamically. That is, you have a set number of objects before the game starts and cannot create anymore later. Only objects that you specify with (see ) are interactable. There is **ONE** exception to this rule, and that is to audio. As you can see below, the **audio** object is looping, and that cannot be changed. However, you can "dynamically" create a sound (non looping) in a game loop that cannot be editted. Thus, the **audio** object might be used for a overlaying soundtrack, while a sound can be used as a sound effect (see ). When the action is used, a signal will be sent to the batch file, which you can capture through the key and mouse macros (see ). Object attributes can then be editted with the ```%TURNIP_MSG%``` macro (see). There are 4 types of objects in turnip:
-
-* **Sprites** : animated images that can be editted and interacted with, **MUST** be loaded first (see), and **MUST** be horizontally packed
-* **Images** : still images that **CANNOT** be editted and interacted with, example usage would be backgrounds that never move nor change, **MUST** be loaded first (see)
-* **Shapes** : solid color that can be editted and interacted with
-* **Text** : text box that can be editted and interacted with, text is always centered vertically
-* **Audio** : looping audio that can be editted
-
+* 
 ### Loading Objects
 ---
 #### Sprites
@@ -248,6 +256,63 @@ CALL :TURNIP_ADD_ATTRIB obj attrib
 | ```f``` | text; must specify all 5 values : color, size, align, font, text (see for more details) | Text |
 
 ### Global Effects
+```Batch
+%TURNIP_MSG% global
+```
+
+* **global** : S to end the game and close window, P to pause the game, U to unpause the game
+
+### Getting Key Input
+
+To get key input use the macros ```%TURNIP_GET_KEY%``` and ```%TURNIP_END_KEY%```. The value is returned in ```%%~nK```, and is the decimal key code of the key pressed. Most computers use ASCII encoding, so it can be looked up [here](https://www.asciitable.com/). For example, to test for the character ```a```:
+
+```Batch
+%TURNIP_GET_KEY%
+    IF "%%~nK" == "97" (
+        :: what happens after pressing 'a'? ::
+    )
+%TURNIP_END_KEY%
+```
+    
+### Getting Mouse Input
+
+To get key input use the macros ```%TURNIP_GET_MOUSE%``` and ```%TURNIP_END_MOUSE%```. The value is returned in ```%%~nM```, and is in the form "type id". **type** is one of H (hovered), C (clicked) or D (dehovered). **id** is the object id. For example, the test if object 2 is hovered and object 3 is clicked:
+
+```Batch
+%TURNIP_GET_MOUSE%
+    IF "%%~nM" == "H 2" (
+        :: what happens when hovered? ::
+    ) else IF "%%~nM" == "C 3" (
+       :: what happens when clicked? ::
+    )
+%TURNIP_END_MOUSE%
+```
+
+### Getting Mouse Input
+
+To get key input use the macros ```%TURNIP_GET_MOUSE%``` and ```%TURNIP_END_MOUSE%```. The value is returned in ```%%~nM```, and is in the form "type id". **type** is one of H (hovered), C (clicked) or D (dehovered). **id** is the object id. For example, to test if object 2 is hovered and object 3 is clicked:
+
+```Batch
+%TURNIP_GET_MOUSE%
+    IF "%%~nM" == "H 2" (
+        :: what happens when hovered? ::
+    ) else IF "%%~nM" == "C 3" (
+       :: what happens when clicked? ::
+    )
+%TURNIP_END_MOUSE%
+```
+
+### Getting End of Animation
+
+To get the end of animation for a sprite, the sprite must have **finish** set to 1. The value returned is in ```%%F``` annd is the object id. Please note that multiple ids can be returned at once, since multiple animations can end at the same time. Hence, in that case, this will loop through each id. For example, to test if object 4's animation ended: (though in this case since it's only one object, you can just forget the IF)
+
+```Batch
+%TURNIP_GET_ANIM%
+    IF "%%F" == "4" (
+        :: what happens when it ends? ::
+    )
+%TURNIP_END_ANIM%
+```
 <a name="rule"/>
 
 ### Important Rules
