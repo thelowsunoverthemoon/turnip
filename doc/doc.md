@@ -88,7 +88,7 @@ In practice, this looks like:
 
 #### In General
 
-Inside ```MAIN```, you add the objects you would like with the ```ADD``` functions (see [here](#co)). Sprites and images, however, must be "loaded" first (see [here](#lo)). To add interactivity to shapes, text, and sprites, see [here](#ai). This is not a traditional renderer, where you must load all objects every frame. Only message what needs to be changed each frame; if nothing changes, there is no need to message anything. We message the renderer via the ```%TURNIP_MSG%```macro. To pause, stop, or unpause the rendering, see [here](#ge). Getting key/mouse input and end of animation is through macros as well (see [here](#gi)). The game goes to the ```RETURN``` label when finished.
+Inside ```MAIN```, you add the objects you would like with the ```ADD``` functions (see [here](#co)). Sprites and images, however, must be "loaded" first (see [here](#lo)). To add interactivity to shapes, text, and sprites, see [here](#ai). This is not a traditional renderer, where you must load all objects every frame. Only message what needs to be changed each frame; if nothing changes, there is no need to message anything. We message the renderer via the ```%TURNIP_MSG%```macro. To change multiple objects at once, simply seperate with ```@ ```. See examples for usage of this. To pause, stop, or unpause the rendering, see [here](#ge). Getting key/mouse input and end of animation is through macros as well (see [here](#gi)). The game goes to the ```RETURN``` label when finished.
 
 <a name="hw"/>
 
