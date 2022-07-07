@@ -22,7 +22,7 @@
 
 ## Getting Started
 
-Visit the documentation [here](doc/doc.md) and look at the examples [here](ex)!
+Visit the documentation [here](doc/README.md) and look at the examples [here](ex)!
 
 ## Showcase
 
