@@ -368,7 +368,7 @@ To get the end of animation for a sprite, the sprite must have **finish** set to
 ---
 1. **Use ```%TURNIP_MSG%``` AS LITTLE AS POSSIBLE**. There is no need to update every frame; the engine renders in the same state until another ```%TURNIP_MSG%```. It will become very slow if you do so. Look at the examples to see ideal usage.
 
-2. **THERE ARE RESTRICTED CHARACTERS**. The following characters cannot be used in values : ```$```  ```;```  ```|```  ```&```  ```!``` ```<``` ```>``` `` ` `` ```#```. However ```!``` can be used by writing instead ```%TURNIP_EXCL%``` and ```&``` can be used with ```%TURNIP_AND%```.
+2. **THERE ARE RESTRICTED CHARACTERS**. The following characters cannot be used in values : ```$```  ```;```  ```|```  ```&```  ```!``` ```<``` ```>``` `` ` `` ```#``` ```?```. However ```!``` can be used by writing instead ```%TURNIP_EXCL%```, ```?``` can be used with ```%TURNIP_QUESTION%``` and ```&``` can be used with ```%TURNIP_AND%```.
 
 3. **HAVE FUN**.
 
