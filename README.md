@@ -37,6 +37,19 @@ mouse/key input
 
 sprites
 ```
+
+<br clear="left"/>
+
+<img align="left" src="https://i.imgur.com/bZfwCQM.gif">
+
+```
+textbox
+
+visual novel
+
+key input
+```
+
 <br clear="left"/>
 
 <img align="left" src="https://i.imgur.com/guQTzJ4.gif">
