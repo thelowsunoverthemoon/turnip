@@ -313,7 +313,7 @@ CALL :TURNIP_ADD_ATTRIB obj attrib
 * **global** : P to pause the game, U to unpause the game
 
 ```Batch
-%TURNIP_END_GAME%
+%TURNIP_GAME_STOP%
 ```
 Use to end the game and close window
 
