@@ -7,7 +7,7 @@
 
 ## Features
 
-* Simple to use, simply copy & paste!
+* Relatively simple to use, simply copy & paste!
 * Supports images, sprites, shapes, text
 * Supports keyboard and mouse input, including hover, dehover, and click
 * Supports audio and related functions
