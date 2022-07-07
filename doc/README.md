@@ -310,8 +310,12 @@ CALL :TURNIP_ADD_ATTRIB obj attrib
 %TURNIP_MSG% global
 ```
 
-* **global** : S to end the game and close window, P to pause the game, U to unpause the game
+* **global** : P to pause the game, U to unpause the game
 
+```Batch
+%TURNIP_END_GAME%
+```
+Use to end the game and close window
 
 <a name="gi"/>
 
