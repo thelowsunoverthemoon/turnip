@@ -58,7 +58,6 @@ In practice, this looks like:
 ::                  TURNIP HEADER                   ::
 
 :MAIN
-
 %TURNIP_INIT%
 
 ::                 CODE BEFORE GAME                 ::
@@ -88,7 +87,7 @@ In practice, this looks like:
 
 #### In General
 
-Inside ```MAIN```, you add the objects you would like with the ```ADD``` functions (see [here](#co)). Sprites and images, however, must be "loaded" first (see [here](#lo)). To add interactivity to shapes, text, and sprites, see [here](#ai). This is not a traditional renderer, where you must load all objects every frame. Only message what needs to be changed each frame; if nothing changes, there is no need to message anything. We message the renderer via the ```%TURNIP_MSG%```macro. To change multiple objects at once, simply seperate with ```@ ```. See examples for usage of this. To pause, stop, or unpause the rendering, see [here](#ge). Getting key/mouse input and end of animation is through macros as well (see [here](#gi)). The game goes to the ```RETURN``` label when finished.
+Inside ```MAIN```, you add the objects you would like with the ```ADD``` functions (see [here](#co)). The first argument always returns a unique id into that variable. Use that in ```%TURNIP_MSG%``` to edit that object. Sprites and images, however, must be "loaded" first (see [here](#lo)). These return a sprite/image id, which you input to the ```ADD``` sprite/image functions. To add interactivity to shapes, text, and sprites, see [here](#ai). This is not a traditional renderer, where you must load all objects every frame. Only message what needs to be changed each frame; if nothing changes, there is no need to message anything. We message the renderer via the ```%TURNIP_MSG%```macro. To change multiple objects at once, simply seperate with ```@ ```. See examples for usage of this. To pause, stop, or unpause the rendering, see [here](#ge). Getting key/mouse input and end of animation is through macros as well (see [here](#gi)). The game goes to the ```RETURN``` label when finished. Before you start, read the [rules](#rule).
 
 <a name="hw"/>
 
@@ -374,6 +373,37 @@ To get the end of animation for a sprite, the sprite must have **finish** set to
 
 2. **THERE ARE RESTRICTED CHARACTERS**. The following characters cannot be used in values : ```$```  ```;```  ```|```  ```&```  ```!``` ```<``` ```>``` `` ` `` ```#``` ```?```. However ```!``` can be used by writing instead ```%TURNIP_EXCL%```, ```?``` can be used with ```%TURNIP_QUESTION%``` and ```&``` can be used with ```%TURNIP_AND%```.
 
-3. **HAVE FUN**.
+3. **THERE ARE RESTRICTED VARIABLE NAMES**. The following variable names cannot be used :
+
+```Batch
+TURNIP_MSG
+TURNIP_GAME_LOOP
+TURNIP_INIT
+TURNIP_GET_KEY
+TURNIP_GET_MOUSE
+TURNIP_GET_ANIM
+TURNIP_EXCL
+TURNIP_AND
+TURNIP_SOUND
+TURNIP_AUDIO
+TURNIP_QUESTION
+TURNIP_END_ANIM
+TURNIP_END_MOUSE
+TURNIP_END_KEY
+TURNIP_GAME_STOP
+TURNIP_GAME_END
+TURNIP_START_GAME
+turnip[window]
+turnip[img][l]
+turnip[img]
+turnip[spr][l]
+turnip[spr]
+turnip[img][a]
+turnip[spr][a]
+turnip[att]
+turnip[a]
+```
+
+4. **HAVE FUN**.
 
 
