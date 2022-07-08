@@ -1,7 +1,7 @@
 :: ---------- turnip engine v1, thelowsunoverthemoon ---------- ::
 :TURNIP_ENGINE
 SET "TURNIP_MSG=ECHO ^!frame^!@"&SET "TURNIP_START_GAME=(IF not defined turnip[window] SET turnip[window]=;;;;;)&(START /B "" "%~F0" DISP ^!turnip[window]^!;^!turnip[img][a]^!;^!turnip[spr][a]^!;^!turnip[mus][l]^!;^!turnip[att]^!;^!turnip[img][l]^!;^!turnip[spr][l]^!)&(START /B "" "%~F0" GAME)>output.txt&EXIT"
-SET "TURNIP_GAME_LOOP=SET /A "nex[ke]=1", "nex[ho]=2", "nex[an]=3", "frame=1"&ECHO 0&(FOR /L %%@ in ()DO ("&SET "TURNIP_GAME_END=)) 3>mouse.txt"
+SET "TURNIP_GAME_LOOP=SET /A "nex[ke]=1", "nex[ho]=2", "nex[an]=3", "frame=1"&ECHO 0&(FOR /L %%@ in ()DO ("&SET "TURNIP_GAME_END=)) 3>mouse.txt"&SET "TURNIP_GAME_STOP=ECHO @ S&EXIT"
 SET "TURNIP_INIT=((CHCP 65001)>NUL&(IF not "%d[f]%" == "" (IF "%d[f]%" == "GAME" (GOTO :GAME) else ((ECHO ^!d[a]:DISP =^! | MSHTA.exe "%~F0")&GOTO :RETURN)))&(COPY NUL input.txt)>NUL&(DEL /F /Q "*.1" "*.-1" "*.2" "*.-2" "*.3" "*.-3" "output.txt" "mouse.txt") 2>NUL&SET /A "turnip[img]=turnip[spr]=turnip[a]=turnip[mus]=0")>NUL"
 SET "TURNIP_GET_KEY=FOR %%K in (*.^!nex[ke]^!)DO ("&SET "TURNIP_END_KEY=SET /A nex[ke]*=-1)"
 SET "TURNIP_GET_MOUSE=(FOR %%M in (*.^!nex[ho]^!)DO ("&SET "TURNIP_END_MOUSE=SET /A nex[ho]*=-1))>&3"
