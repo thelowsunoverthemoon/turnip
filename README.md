@@ -7,7 +7,7 @@
 
 ## Features
 
-* Relatively simple to use, simply copy & paste!
+* Simple to include, just copy & paste!
 * Supports images, sprites, shapes, text
 * Supports keyboard and mouse input, including hover, dehover, and click
 * Supports audio and related functions
@@ -40,7 +40,7 @@ sprites
 
 <br clear="left"/>
 
-<img align="left" src="https://i.imgur.com/bZfwCQM.gif">
+<img align="left" src="https://i.imgur.com/For4Ehs.gif">
 
 ```
 textbox
