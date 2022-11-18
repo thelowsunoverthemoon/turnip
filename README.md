@@ -13,7 +13,7 @@
 * Supports audio and related functions
 * No external exes, contained within a single batch file
 * Ideal Uses : simple simulations, non input-driven games, GUI, ect
-* Works with Windows 7 (with IE 9+ installed) and up
+* Works out-of-the-box with Windows 7 (with IE 9+ installed) and up
 
 ## Drawbacks
 
