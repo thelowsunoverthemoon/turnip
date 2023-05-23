@@ -3,7 +3,7 @@ var inser = document.getElementById("Anchor");
 var fso = new ActiveXObject("Scripting.FileSystemObject");
 var user = fso.GetStandardStream(0).ReadLine().split(";");
 
-/* Set up */
+/* Default Variables */
 if (user[0] == "") {
     user[0] = "#FFFFFF";
 }
@@ -15,16 +15,20 @@ if (user[1] == "") {
 if (user[2] == "") {
     user[2] = 500;
 }
+
 if (user[3] == "") {
     user[3] = 0;
 }
+
 if (user[4] == "") {
     user[4] = 0;
 }
+
 if (user[5] == "") {
     user[5] = 10;
 }
 
+/* Canvas setup */
 document.getElementById("Anchor").style.background = user[0];
 window.resizeTo(user[1], user[2]);
 window.moveTo(user[3], user[4]);
@@ -60,13 +64,11 @@ if (user[9] != "") {
     makeInter(altInput(user[9]));
 }
 
-
 /* Input */
 document.onkeypress = function (e) {
     var e = e || window.event;
     msgKey(e.keyCode);
 };
-
 
 /* Game Loop */
 var frame = 0;
@@ -92,7 +94,7 @@ setInterval(function () {
 
 setInterval(function () {
     getOutput(fileKey, prevKey);
-    getOutput2(fileHover, prevHov);
+    getOutputHover(fileHover, prevHov);
 }, 10);
 
 /* Functions */
@@ -200,7 +202,7 @@ function getOutput(file, prev) {
     }
 }
 
-function getOutput2(file, prev) {
+function getOutputHover(file, prev) {
     var line;
     while (!file.AtEndOfStream) {
         line = file.ReadLine();
