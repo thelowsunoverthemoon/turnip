@@ -29,7 +29,7 @@ Visit the documentation [here](doc/README.md) and look at the examples [here](ex
 
 ## Showcase
 
-<img align="left" src="img/rogue.gif" width="700px">
+<img align="left" src="img/rogue.gif" width="550px">
 
 ```
 textbox
@@ -43,7 +43,7 @@ sprites
 
 <br clear="left"/>
 
-<img align="left" src="img/date.gif" width="700px">
+<img align="left" src="img/date.gif" width="550px">
 
 ```
 textbox
@@ -55,7 +55,7 @@ key input
 
 <br clear="left"/>
 
-<img align="left" src="img/graph.gif" width="700px">
+<img align="left" src="img/graph.gif" width="550px">
 
 ```
 textbox
@@ -66,7 +66,7 @@ mouse/key input
 ```
 <br clear="left"/>
 
-<img align="left" src="img/balls.gif" width="700px">
+<img align="left" src="img/balls.gif" width="550px">
 
 ```
 particle system
