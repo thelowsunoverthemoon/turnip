@@ -1,9 +1,11 @@
 <p align="center">
-  <img src="https://i.imgur.com/uDJ4fuE.png">
+  <img src="img/logo.png">
 </p>
 <p align="center">
   <b>Batch Game Engine with Real Graphics, Mouse/Keyboard Input, and Audio, without External Exes</b>
 </p>
+
+
 
 ## Features
 
@@ -27,7 +29,7 @@ Visit the documentation [here](doc/README.md) and look at the examples [here](ex
 
 ## Showcase
 
-<img align="left" src="https://i.imgur.com/5H3WosM.gif">
+<img align="left" src="img/rogue.gif" width="700px">
 
 ```
 textbox
@@ -41,7 +43,7 @@ sprites
 
 <br clear="left"/>
 
-<img align="left" src="https://i.imgur.com/For4Ehs.gif">
+<img align="left" src="img/date.gif" width="700px">
 
 ```
 textbox
@@ -53,7 +55,7 @@ key input
 
 <br clear="left"/>
 
-<img align="left" src="https://i.imgur.com/guQTzJ4.gif">
+<img align="left" src="img/graph.gif" width="700px">
 
 ```
 textbox
@@ -64,7 +66,7 @@ mouse/key input
 ```
 <br clear="left"/>
 
-<img align="left" src="https://i.imgur.com/A4z6Ceg.gif">
+<img align="left" src="img/balls.gif" width="700px">
 
 ```
 particle system
