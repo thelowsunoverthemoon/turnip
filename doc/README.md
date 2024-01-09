@@ -139,7 +139,7 @@ CALL :TURNIP_SPRITE id file frame
 * **id** : variable to return sprite id to
 * **file** : name of spritesheet
 * **frame** : number of frames in spritesheet
-* 
+  
 <a name="loi"/>
 
 #### Images
